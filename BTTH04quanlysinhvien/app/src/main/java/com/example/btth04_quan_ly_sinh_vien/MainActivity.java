@@ -71,6 +71,10 @@ public class MainActivity extends AppCompatActivity {
                 String maLop = edtMaLop.getText().toString();
                 String tenLop = edtTenLop.getText().toString();
                 int siSo = Integer.parseInt("0" + edtSiSo.getText().toString());
+                if (tenLop.isEmpty()) {
+                    Toast.makeText(MainActivity.this, "Tên lớp không được để trống", Toast.LENGTH_SHORT).show();
+                    return;
+                }
                 if ( siSo<=0 || siSo>100 ) {
                     Toast.makeText(MainActivity.this, "Sĩ số không hợp lệ", Toast.LENGTH_SHORT).show();
                     return;
@@ -121,7 +125,9 @@ public class MainActivity extends AppCompatActivity {
                 }
                 ContentValues values = new ContentValues();
                 values.put("siSo", siSo);
-                values.put("tenLop", tenLop);
+                if (!tenLop.isEmpty()) {
+                    values.put("tenLop", tenLop);
+                }
                 int n = database.update("tbLop", values, "maLop = ?", new String[]{maLop});
                 String message = "";
                 if (n == 0) {
