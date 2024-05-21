@@ -95,7 +95,26 @@ public class MainActivity extends AppCompatActivity {
                     message = "Xóa dữ liệu thất bại";
                 }
                 else {
-                    message = "Xóa dữ liệu thành công";
+                    message = n + "Xóa dữ liệu thành công";
+                }
+                Toast.makeText(MainActivity.this, message, Toast.LENGTH_SHORT).show();
+            }
+        });
+
+        btnSua.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                int siSo = Integer.parseInt(edtSiSo.getText().toString());
+                String maLop = edtMaLop.getText().toString();
+                ContentValues values = new ContentValues();
+                values.put("siSo", siSo);
+                int n = database.update("tbLop", values, "maLop = ?", new String[]{maLop});
+                String message = "";
+                if (n == 0) {
+                    message = "Sửa dữ liệu thất bại";
+                }
+                else {
+                    message = n + "Sửa dữ liệu thành công";
                 }
                 Toast.makeText(MainActivity.this, message, Toast.LENGTH_SHORT).show();
             }
