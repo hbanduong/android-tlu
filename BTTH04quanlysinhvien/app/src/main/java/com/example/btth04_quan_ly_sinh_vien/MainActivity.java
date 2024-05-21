@@ -70,7 +70,11 @@ public class MainActivity extends AppCompatActivity {
             public void onClick(View v) {
                 String maLop = edtMaLop.getText().toString();
                 String tenLop = edtTenLop.getText().toString();
-                int siSo = Integer.parseInt(edtSiSo.getText().toString());
+                int siSo = Integer.parseInt("0" + edtSiSo.getText().toString());
+                if ( siSo<=0 || siSo>100 ) {
+                    Toast.makeText(MainActivity.this, "Sĩ số không hợp lệ", Toast.LENGTH_SHORT).show();
+                    return;
+                }
                 ContentValues values = new ContentValues();
                 values.put("maLop", maLop);
                 values.put("tenLop", tenLop);
@@ -83,6 +87,7 @@ public class MainActivity extends AppCompatActivity {
                     message = "Thêm dữ liệu thành công";
 
                 }
+                updateListView();
                 Toast.makeText(MainActivity.this, message, Toast.LENGTH_SHORT).show();
             }
         });
@@ -97,8 +102,9 @@ public class MainActivity extends AppCompatActivity {
                     message = "Xóa dữ liệu thất bại";
                 }
                 else {
-                    message = n + "Xóa dữ liệu thành công";
+                    message = "Xóa dữ liệu thành công";
                 }
+                updateListView();
                 Toast.makeText(MainActivity.this, message, Toast.LENGTH_SHORT).show();
             }
         });
@@ -106,18 +112,25 @@ public class MainActivity extends AppCompatActivity {
         btnSua.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                int siSo = Integer.parseInt(edtSiSo.getText().toString());
+                int siSo = Integer.parseInt("0" + edtSiSo.getText().toString());
+                String tenLop = edtTenLop.getText().toString();
                 String maLop = edtMaLop.getText().toString();
+                if ( siSo<=0 || siSo>100 ) {
+                    Toast.makeText(MainActivity.this, "Sĩ số không hợp lệ", Toast.LENGTH_SHORT).show();
+                    return;
+                }
                 ContentValues values = new ContentValues();
                 values.put("siSo", siSo);
+                values.put("tenLop", tenLop);
                 int n = database.update("tbLop", values, "maLop = ?", new String[]{maLop});
                 String message = "";
                 if (n == 0) {
                     message = "Sửa dữ liệu thất bại";
                 }
                 else {
-                    message = n + "Sửa dữ liệu thành công";
+                    message = "Sửa dữ liệu thành công";
                 }
+                updateListView();
                 Toast.makeText(MainActivity.this, message, Toast.LENGTH_SHORT).show();
             }
         });
@@ -125,17 +138,21 @@ public class MainActivity extends AppCompatActivity {
         btnTruyVan.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                arrayList.clear();
-                Cursor cursor = database.query("tbLop", null, null, null, null, null, null);
-                cursor.moveToNext();
-                while (!cursor.isAfterLast()) {
-                    String data = cursor.getString(0) + " - " + cursor.getString(1) + " - " + cursor.getInt(2);
-                    arrayList.add(data);
-                    cursor.moveToNext();
-                }
-                cursor.close();
-                arrayAdapter.notifyDataSetChanged();
+                updateListView();
             }
         });
+    }
+
+    public void updateListView() {
+        arrayList.clear();
+        Cursor cursor = database.query("tbLop", null, null, null, null, null, null);
+        cursor.moveToNext();
+        while (!cursor.isAfterLast()) {
+            String data = cursor.getString(0) + " - " + cursor.getString(1) + " - " + cursor.getInt(2);
+            arrayList.add(data);
+            cursor.moveToNext();
+        }
+        cursor.close();
+        arrayAdapter.notifyDataSetChanged();
     }
 }
