@@ -1,6 +1,7 @@
 package com.example.btth04_quan_ly_sinh_vien;
 
 import android.content.ContentValues;
+import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
 import android.os.Bundle;
 import android.util.Log;
@@ -22,7 +23,7 @@ import java.util.ArrayList;
 public class MainActivity extends AppCompatActivity {
 
     EditText edtMaLop, edtTenLop, edtSiSo;
-    Button btnThem, btnSua, btnXoa;
+    Button btnThem, btnSua, btnXoa, btnTruyVan;
     ListView lvSinhVien;
 
     ArrayList<String> arrayList;
@@ -47,6 +48,7 @@ public class MainActivity extends AppCompatActivity {
         btnThem = findViewById(R.id.btnThem);
         btnSua = findViewById(R.id.btnSua);
         btnXoa = findViewById(R.id.btnXoa);
+        btnTruyVan = findViewById(R.id.btnTruyVan);
         lvSinhVien = findViewById(R.id.lvSinhVien);
 
         arrayList = new ArrayList<>();
@@ -117,6 +119,22 @@ public class MainActivity extends AppCompatActivity {
                     message = n + "Sửa dữ liệu thành công";
                 }
                 Toast.makeText(MainActivity.this, message, Toast.LENGTH_SHORT).show();
+            }
+        });
+
+        btnTruyVan.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                arrayList.clear();
+                Cursor cursor = database.query("tbLop", null, null, null, null, null, null);
+                cursor.moveToNext();
+                while (!cursor.isAfterLast()) {
+                    String data = cursor.getString(0) + " - " + cursor.getString(1) + " - " + cursor.getInt(2);
+                    arrayList.add(data);
+                    cursor.moveToNext();
+                }
+                cursor.close();
+                arrayAdapter.notifyDataSetChanged();
             }
         });
     }
