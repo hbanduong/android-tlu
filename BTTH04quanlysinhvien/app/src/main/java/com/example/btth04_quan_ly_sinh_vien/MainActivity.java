@@ -84,5 +84,21 @@ public class MainActivity extends AppCompatActivity {
                 Toast.makeText(MainActivity.this, message, Toast.LENGTH_SHORT).show();
             }
         });
+
+        btnXoa.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                String maLop = edtMaLop.getText().toString();
+                int n = database.delete("tbLop", "maLop = ?", new String[]{maLop});
+                String message = "";
+                if (n == 0) {
+                    message = "Xóa dữ liệu thất bại";
+                }
+                else {
+                    message = "Xóa dữ liệu thành công";
+                }
+                Toast.makeText(MainActivity.this, message, Toast.LENGTH_SHORT).show();
+            }
+        });
     }
 }
