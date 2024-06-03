@@ -1,0 +1,30 @@
+{
+  "project_info": {
+    "project_number": "410400861241",
+    "project_id": "quanlysinhvien-58ae3",
+    "storage_bucket": "quanlysinhvien-58ae3.appspot.com",
+    "firebase_url": "https://quanlysinhvien-58ae3-default-rtdb.asia-southeast1.firebasedatabase.app/"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:410400861241:android:70db9edaa722e0f30131e8",
+        "android_client_info": {
+          "package_name": "com.zwng.firebase_quanlysinhvien"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyAOXfZwByvHoPyK13ZmRM8ZQzYRaCmNiIk"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
