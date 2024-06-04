@@ -3,18 +3,19 @@ package com.zwng.ktgk.model;
 import java.util.ArrayList;
 
 public class DepartmentModel {
-    private String id, name, email, website, address, phoneNumber;
+    private String id, name, email, website, address, phoneNumber, idParent;
 
     public DepartmentModel() {
     }
 
-    public DepartmentModel(String id, String name, String email, String website, String address, String phoneNumber) {
+    public DepartmentModel(String id, String name, String email, String website, String address, String phoneNumber, String idParent) {
         this.id = id;
         this.name = name;
         this.email = email;
         this.website = website;
         this.address = address;
         this.phoneNumber = phoneNumber;
+        this.idParent = idParent;
     }
 
     public String getId() {
@@ -63,5 +64,13 @@ public class DepartmentModel {
 
     public void setPhoneNumber(String phoneNumber) {
         this.phoneNumber = phoneNumber;
+    }
+
+    public String getIdParent() {
+        return idParent;
+    }
+
+    public void setIdParent(String idParent) {
+        this.idParent = idParent;
     }
 }
