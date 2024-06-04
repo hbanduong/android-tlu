@@ -74,4 +74,30 @@ public class FirebaseDatabaseHelper {
             Snackbar.make(view, "Id field is empty", Snackbar.LENGTH_SHORT).show();
         }
     }
+
+    public void deleteDepartment(String id, View view) {
+        dReferenceDepartment.addListenerForSingleValueEvent(new ValueEventListener() {
+            @Override
+            public void onDataChange(@NonNull DataSnapshot snapshot) {
+                if (snapshot.exists()) {
+                    dReferenceDepartment.child(id).removeValue().addOnCompleteListener(task -> {
+                        if (task.isSuccessful()) {
+                            Snackbar.make(view, "Deleted successfully", Snackbar.LENGTH_SHORT).show();
+                        }
+                        else {
+                            Snackbar.make(view, "Failed to delete", Snackbar.LENGTH_SHORT).show();
+                        }
+                    });
+                }
+                else {
+                    Snackbar.make(view, "Department with ID: " + id + " does not exist", Snackbar.LENGTH_SHORT).show();
+                }
+            }
+
+            @Override
+            public void onCancelled(@NonNull DatabaseError error) {
+
+            }
+        });
+    }
 }

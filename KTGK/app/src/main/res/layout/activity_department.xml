@@ -31,6 +31,7 @@
             android:textSize="18sp"/>
 
         <EditText
+            android:id="@+id/edtId"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_weight="5"/>
@@ -50,6 +51,7 @@
             android:textSize="18sp"/>
 
         <EditText
+            android:id="@+id/edtName"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_weight="5"/>
@@ -69,6 +71,7 @@
             android:textSize="18sp"/>
 
         <EditText
+            android:id="@+id/edtEmail"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_weight="5"/>
@@ -88,6 +91,7 @@
             android:textSize="18sp"/>
 
         <EditText
+            android:id="@+id/edtWebsite"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_weight="5"/>
@@ -107,6 +111,7 @@
             android:textSize="18sp"/>
 
         <EditText
+            android:id="@+id/edtAddress"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_weight="5"/>
@@ -126,6 +131,7 @@
             android:textSize="18sp"/>
 
         <EditText
+            android:id="@+id/edtPhoneNumber"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_weight="5"/>
@@ -145,6 +151,7 @@
             android:textSize="18sp"/>
 
         <EditText
+            android:id="@+id/edtIdParent"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_weight="5"/>
@@ -158,6 +165,7 @@
         android:layout_marginVertical="10dp">
 
         <Button
+            android:id="@+id/btnSearch"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_weight="1"
@@ -165,6 +173,7 @@
             android:layout_marginHorizontal="2dp"/>
 
         <Button
+            android:id="@+id/btnAdd"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_weight="1"
@@ -172,6 +181,7 @@
             android:layout_marginHorizontal="2dp"/>
 
         <Button
+            android:id="@+id/btnUpdate"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_weight="1"
@@ -179,6 +189,7 @@
             android:layout_marginHorizontal="2dp"/>
 
         <Button
+            android:id="@+id/btnDelete"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_weight="1"

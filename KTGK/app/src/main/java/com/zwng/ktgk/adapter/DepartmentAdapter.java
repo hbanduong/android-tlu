@@ -20,7 +20,7 @@ public class DepartmentAdapter extends ArrayAdapter<DepartmentModel> {
     private List<DepartmentModel> departmentList;
 
     public DepartmentAdapter(Context context, List<DepartmentModel> list) {
-        super(context, 0, list);
+        super(context, R.layout.list_item_department, list);
         this.context = context;
         this.departmentList = list;
     }
@@ -30,7 +30,7 @@ public class DepartmentAdapter extends ArrayAdapter<DepartmentModel> {
     public View getView(int position, @Nullable View convertView, @NonNull ViewGroup parent) {
         DepartmentModel department = departmentList.get(position);
         if (convertView == null) {
-            convertView = LayoutInflater.from(context).inflate(0, parent, false);
+            convertView = LayoutInflater.from(context).inflate(R.layout.list_item_department, parent, false);
         }
         TextView tvId = convertView.findViewById(R.id.tvId);
         TextView tvName = convertView.findViewById(R.id.tvName);
